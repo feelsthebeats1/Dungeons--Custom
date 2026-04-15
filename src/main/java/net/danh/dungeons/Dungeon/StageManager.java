@@ -488,8 +488,7 @@ public class StageManager {
                                         }
                                     },
                                     () -> {
-                                        for (Player player : p.getWorld().getPlayers())
-                                            player.teleport(rLocation);
+                                        players.forEach(player -> player.teleport(rLocation));
                                         players.forEach(player -> {
                                             player.removePotionEffect(PotionEffectType.BLINDNESS);
                                             player.setGameMode(gamemode.get(player));
@@ -681,8 +680,7 @@ public class StageManager {
                                 () -> {
                                     p.removePotionEffect(PotionEffectType.BLINDNESS);
                                     p.setGameMode(gamemode.get(p));
-                                    for (Player player : p.getWorld().getPlayers())
-                                        player.teleport(rLocation);
+                                    p.teleport(rLocation);
                                     delete(config.getString("world") + "_" + p.getName() + "_" + dungeonID);
                                     if (isComplete) {
                                         List<String> commands = config.getStringList("commands.complete");
